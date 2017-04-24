@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Article;
+use DB;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        return view('admin/article/index')->withArticles(Article::all());
+//        return view('admin/article/index')->withArticles(Article::all());
+
+        $articles = DB::table('articles')->orderBy('id', "desc")->paginate(5);
+        return view('admin.article.index', ['articles' => $articles]);
     }
     
     public function create()

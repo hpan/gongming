@@ -53,9 +53,10 @@
                     @endforeach
                 </div>
             </div>
+            <div style="width:100%; text-align:center; margin-top: -30px;">{!! $articles->links() !!}</div>
+
         </div>
     </div>
 </div>
-
 
 @endsection
