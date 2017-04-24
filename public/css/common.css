@@ -1,0 +1,71 @@
+.cover_small{
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+}
+
+.form-control{
+    /*width: 96%;*/
+}
+
+.vertical-center{
+    display:table;
+    margin: auto;
+    padding-top: 50%;
+    /*padding-bottom: auto;*/
+    height: 100%;
+}
+html body{
+    height: 100%;
+    font-family: "PingFang Resular";
+}
+.container{
+    /*position: absolute;*/
+    /*top: 50%;*/
+    height: 100%;
+    /*margin-left:auto;*/
+    /*margin-right:auto;*/
+    /*background-color: #2b542c;*/
+}
+.font-header{
+    font-family:"PingFang Bold", "Microsoft YaHei";
+    font-size: 18px;
+    color: #32bd69;
+    padding-bottom: 0px;
+}
+.btn-success{
+    background-color: #32bd69;
+    height:44px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.panel-heading{
+    padding-bottom: 0;
+    padding-left:0;
+}
+.panel-body{
+    padding-top: 10px;
+}
+.form-group{
+    margin-bottom: 10px;
+}
+.form-anonymous{
+    margin-top:5px;
+}
+.font-anonymous{
+    color:#999;font-size:14px;
+    /*margin-top: 4px;*/
+    vertical-align:middle;
+}
+.form-control{
+    -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+input[type="text"], textarea{
+    -webkit-appearance: none;
+}
+input[type="checkbox"] {
+    /*-webkit-appearance: none;*/
+    /*border-color: #2ca02c;*/
+    /*border: dashed 1px Red;*/
+}
