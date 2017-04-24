@@ -28,6 +28,8 @@
                             </span>&nbsp;
                                 <span><b>手机号：</b></span><span>{{$article->mobile}}</span>&nbsp;
                                 <span><b>地址：</b></span><span>{{$article->address}}</span>&nbsp;
+                                <span><b>爆料时间：</b></span><span>{{$article->created_at}}</span>&nbsp;
+
 
                             </h6>
                             <div class="content">
