@@ -18,8 +18,11 @@
                     @foreach ($articles as $article)
                         <hr>
                         <div class="article">
-                            <h4>{{ $article->body }}</h4>
+                            <h6>
+                            
+                            </h6>
                             <div class="content">
+                                {{ $article->body }}
                                 <?php
                                     $imgArray = explode(",", $article->images);
 //                                    var_dump($imgArray);
@@ -33,7 +36,7 @@
                             </div>
                         </div>
                         {{--<a href="{{ url('admin/article/'.$article->id.'/edit') }}" class="btn btn-success">编辑</a>--}}
-                        <div style="color: #999;">
+                        <div style="font-size:9pt; color: #999;">
                             <span><b>爆料人姓名：</b></span><span>
                             @if($article->anonymous == 1)
                                 匿名
