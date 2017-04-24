@@ -30,7 +30,7 @@
                                 <input type="text" name="name" class="form-control" placeholder="请输入真实姓名（选填）">
                             </div>
                             <div class="form-group">
-                                <input type="mobile" name="mobile" class="form-control" placeholder="请输入手机号码">
+                                <input type="number" name="mobile" class="form-control" placeholder="请输入手机号码">
                             </div>
 
                             <div class="form-group">

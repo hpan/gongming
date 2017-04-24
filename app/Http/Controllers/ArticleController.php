@@ -28,12 +28,13 @@ class ArticleController extends Controller
         // 数据验证
         $this->validate($request, [
 //            'title' => 'required|unique:articles|max:255', // 必填、在 articles 表中唯一、最大长度 255
-            'body' => 'required|max:250', // 必填
+            'body' => 'required|max:500', // 必填
             'name' => 'max:10', //
             'mobile' => 'required|max:18', // 必填
             'address' => 'required|max:100', // 必填
         ],[
-            'required'=>':attribute为必填项'//报错信息提醒
+            'required'=>':attribute为必填项',//报错信息提醒
+            'max'=>':attribute超过最大字数'
         ],[
             'body'=>"爆料内容",'name'=>"真实姓名",'mobile'=>"手机号",'address'=>"地址"
         ]);
