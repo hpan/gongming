@@ -82,6 +82,7 @@
             }).done(function(res) {
                         var imgUrl = "" + res;
                         console.log(imgUrl);
+                        console.log("image length=" . $("#image-holder > img").length );
                         if($("#image-holder > img").length >=3){
                             console.log("最多只能传2张");
                             alert("最多只能上传2张照片");
