@@ -40,7 +40,7 @@
                                 ?>
                                 <div >
                                     @foreach($imgArray as $img)
-                                        <a href="{{$img}}" rel="lightbox-{{$article->id}}}}"><img src="{{$img}}" class="cover_small" "></a>
+                                        <a href="{{$img}}" rel="lightbox-{{$article->id}}}}"><img src="{{$img}}" class="cover_small"></a>
                                     @endforeach
                                 <form action="{{ url('admin/article/'.$article->id) }}" method="POST" style="display: inline; float:right; padding: 20px 10px;">
                                     {{ method_field('DELETE') }}

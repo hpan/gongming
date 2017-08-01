@@ -84,7 +84,9 @@
                         console.log(imgUrl);
                         if($("#image-holder > img").length >=3){
                             console.log("最多只能传2张");
-                            alert("最多只能上传3张图片");
+                            alert("最多只能上传2张照片");
+                        }else if($("#image-holder > img").length <=0){
+                            alert("必须上传照片");
                         }else {
                             $("#image-holder").append('<img src="' + imgUrl + '" class="cover_small">');
                             $("#iptImageUrls").val($("#iptImageUrls").val() + "," + imgUrl);
