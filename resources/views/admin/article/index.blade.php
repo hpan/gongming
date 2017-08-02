@@ -19,6 +19,7 @@
                         <hr>
                         <div class="article">
                             <h6>
+                                <span>[{{$article->id}}]</span>
                                 <span><b>爆料人姓名：</b></span><span>
                             @if($article->anonymous == 1)
                                         匿名
@@ -38,10 +39,12 @@
                                     $imgArray = explode(",", $article->images);
 //                                    var_dump($imgArray);
                                 ?>
-                                <div >
+                                <div style="width: 100%; height: 75px;">
                                     @foreach($imgArray as $img)
                                         @if(strlen($img)>0)
                                             <a href="{{$img}}" rel="lightbox-{{$article->id}}}}"><img src="{{$img}}" class="cover_small"></a>
+                                        @else
+                                            {{--<div class="cover_small" style="background-color: #2e3436; float:left;"></div>--}}
                                         @endif
                                     @endforeach
                                 <form action="{{ url('admin/article/'.$article->id) }}" method="POST" style="display: inline; float:right; padding: 20px 10px;">
@@ -49,6 +52,7 @@
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger">删除</button>
                                 </form>
+                                    {{--<div style="width:80px;height: 60px; float:right; background-color: #2ca02c;">P</div>--}}
                                 </div>
                             </div>
                         </div>
