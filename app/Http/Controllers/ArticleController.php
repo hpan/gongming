@@ -32,11 +32,12 @@ class ArticleController extends Controller
             'name' => 'max:10', //
             'mobile' => 'required|max:18', // 必填
             'address' => 'required|max:100', // 必填
+            'iptImageUrls' => 'required', // 必填
         ],[
             'required'=>':attribute为必填项',//报错信息提醒
             'max'=>':attribute超过最大字数'
         ],[
-            'body'=>"爆料内容",'name'=>"真实姓名",'mobile'=>"手机号",'address'=>"地址"
+            'body'=>"爆料内容",'name'=>"真实姓名",'mobile'=>"手机号",'address'=>"地址", 'iptImageUrls'=>"照片"
         ]);
 
         // 通过 Article Model 插入一条数据进 articles 表

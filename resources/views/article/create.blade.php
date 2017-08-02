@@ -22,7 +22,7 @@
                                     <label style="float:right;font-weight: normal;">
                                         <input type="checkbox" name="anonymous[]" style="vertical-align:middle; margin-top: 0; margin-bottom: 1px;">
 
-                                        <span class="font-anonymous">我要匿名</span>
+                                        <span class="font-anonymous">我要匿名22</span>
                                     </label>
 
                             </div>
@@ -82,12 +82,13 @@
             }).done(function(res) {
                         var imgUrl = "" + res;
                         console.log(imgUrl);
-                        console.log("image length=" . $("#image-holder > img").length );
+                        console.log("image length=" + $("#image-holder > img").length );
                         if($("#image-holder > img").length >=3){
                             console.log("最多只能传2张");
                             alert("最多只能上传2张照片");
-                        }else if($("#image-holder > img").length <=0){
-                            alert("必须上传照片");
+//                        }else if($("#image-holder > img").length <=0){
+//                            alert("必须上传照片");
+//                            return false;
                         }else {
                             $("#image-holder").append('<img src="' + imgUrl + '" class="cover_small">');
                             $("#iptImageUrls").val($("#iptImageUrls").val() + "," + imgUrl);
