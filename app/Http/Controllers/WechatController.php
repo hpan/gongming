@@ -26,7 +26,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $wechat->server->setMessageHandler(function($message){
-            return "欢迎关注 overtrue1111！";
+            return "hello, " . $message->FromUserName . "MsgType=" . $message->MsgType . ", 欢迎来信！";
         });
 
         Log::info('return response2222.');
