@@ -25,16 +25,16 @@ Route::post('comment', 'CommentController@store');
 Route::post('file/upload', 'FileController@upload');
 Route::get('file/show/{filename}', 'FileController@show');
 Route::get('article/success', 'ArticleController@success');
+Route::any('wechat', 'WechatController@serve');
 Route::resource('article', 'ArticleController');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'HomeController@index');
     Route::resource('article', 'ArticleController');
-    Route::any('/wechat', 'WechatController@serve');
-    Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
-        Route::get('/user', function () {
-            $user = session('wechat.oauth_user'); // 拿到授权用户资料
+});
+Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+    Route::get('/user', function () {
+        $user = session('wechat.oauth_user'); // 拿到授权用户资料
 
-            dd($user);
-        });
+        dd($user);
     });
 });

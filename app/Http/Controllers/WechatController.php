@@ -7,7 +7,11 @@
  */
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
+use Log;
 
 class WechatController extends Controller
 {
@@ -28,5 +32,10 @@ class WechatController extends Controller
         Log::info('return response2222.');
 
         return $wechat->server->serve();
+    }
+
+    public function index()
+    {
+        return view("wechat/index");
     }
 }
