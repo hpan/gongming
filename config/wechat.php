@@ -16,8 +16,8 @@ return [
     /*
      * 账号基本信息，请从微信公众平台/开放平台获取
      */
-    'app_id'  => env('WECHAT_APPID', 'wxa083557a32d53a39'),         // AppID
-    'secret'  => env('WECHAT_SECRET', '311e50adcb7a75905665a8603efda1a9'),     // AppSecret
+    'app_id'  => env('WECHAT_APPID', 'wx2abec1cd5c403a75'),         // AppID
+    'secret'  => env('WECHAT_SECRET', '6b1c3efd83579fac3073aaf030b38114'),     // AppSecret
     'token'   => env('WECHAT_TOKEN', 'gongming'),          // Token
     'aes_key' => env('WECHAT_AES_KEY', ''),                    // EncodingAESKey
 
@@ -45,7 +45,7 @@ return [
      * 路由配置
      */
     'route' => [
-        'enabled' => true,         // 是否开启路由
+        'enabled' => false,         // 是否开启路由
         'attributes' => [           // 路由 group 参数
             'prefix' => null,
             'middleware' => null,
