@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use EasyWeChat\Message\Text;
 use Log;
 
 class WechatController extends Controller
