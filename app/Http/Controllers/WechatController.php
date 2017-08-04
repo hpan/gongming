@@ -32,10 +32,10 @@ class WechatController extends Controller
                 case 'event':
                     Log::info("eventType = " . $message->Event);
                     switch ($message->Event){
-                        case 'click':
+                        case 'CLICK':
                             Log::info("get a click event");
                             break;
-                        case 'view';
+                        case 'VIEW';
                             Log::info("get a view event");
                             break;
                     }
@@ -52,6 +52,13 @@ class WechatController extends Controller
         Log::info('return response.');
 
         return $wechat->server->serve();
+    }
+
+    public function send(){
+        $openId = "o_GGtv_8Op5YmNOm6dQBgal515zU";
+        $app = app('wechat');
+        $message = new Text(['content' => 'Hello world!']);
+        $result = $app->staff->message($message)->to($openId)->send();
     }
 
     public function menu()
