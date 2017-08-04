@@ -26,7 +26,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $wechat->server->setMessageHandler(function($message){
-            return "hello, " . $message->FromUserName . "MsgType=" . $message->MsgType . ", 欢迎来信！";
+            return "hello, " . $message->FromUserName . ", MsgType=" . $message->MsgType . ", 欢迎来信！";
         });
 
         Log::info('return response2222.');
@@ -34,8 +34,19 @@ class WechatController extends Controller
         return $wechat->server->serve();
     }
 
-    public function index()
+    public function menu()
     {
-        return view("wechat/index");
+        $app = app('wechat');
+        $menu = $app->menu;
+
+        $allMenus = $menu->all();
+        $currentMenus = $menu->current();
+        echo "allMenus=" . json_encode($allMenus);
+        echo ",  currentMenus=" . json_encode($currentMenus);
+
+    }
+
+    public function createmenu(){
+        echo "create menu...";
     }
 }

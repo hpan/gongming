@@ -26,6 +26,9 @@ Route::post('file/upload', 'FileController@upload');
 Route::get('file/show/{filename}', 'FileController@show');
 Route::get('article/success', 'ArticleController@success');
 Route::any('wechat', 'WechatController@serve');
+Route::any('wechat/menu', 'WechatController@menu');
+Route::any('wechat/createmenu', 'WechatController@createmenu');
+Route::any('test/{id}', 'TestController@show');
 Route::resource('article', 'ArticleController');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'HomeController@index');
