@@ -26,8 +26,9 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $wechat->server->setMessageHandler(function($message){
-            $rtnMsg = "hello, " . $message->FromUserName . ", MsgType=" . $message->MsgType . ", 欢迎来信！";
-            Log::info($rtnMsg);
+            $logMsg = "hello, " . $message->FromUserName . ", MsgType=" . $message->MsgType . ", 欢迎来信！";
+            $rtnMsg = "谢谢关注!";
+            Log::info($logMsg);
             switch ($message->MsgType){
                 case 'event':
                     Log::info("eventType = " . $message->Event);
