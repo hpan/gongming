@@ -26,10 +26,30 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $wechat->server->setMessageHandler(function($message){
-            return "hello, " . $message->FromUserName . ", MsgType=" . $message->MsgType . ", 欢迎来信！";
+            $rtnMsg = "hello, " . $message->FromUserName . ", MsgType=" . $message->MsgType . ", 欢迎来信！";
+            Log::info($rtnMsg);
+            switch ($message->MsgType){
+                case 'event':
+                    Log::info("eventType = " . $message->Event);
+                    switch ($message->Event){
+                        case 'click':
+                            Log::info("get a click event");
+                            break;
+                        case 'view';
+                            Log::info("get a view event");
+                            break;
+                    }
+                    break;
+
+            }
+            return $rtnMsg;
         });
 
-        Log::info('return response2222.');
+//        $wechat->server->setEventHandler(function($event){
+//
+//        });
+
+        Log::info('return response.');
 
         return $wechat->server->serve();
     }
@@ -55,10 +75,18 @@ class WechatController extends Controller
                 "url"  => "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIxNTgxMTA2OA==#wechat_redirect"
             ],
             [
-                "type" => "view",
+                "type" => "click",
                 "name" => "随手拍",
-                "url"  => "http://gm.shenzhenjuly.com/article/create"
-            ],
+                "key" => "ssp",
+                "sub_button" =>[
+                    [
+                    "type" => "view",
+                    "name" => "我要爆料",
+                    "url"  => "http://gm.shenzhenjuly.com/article/create"
+                    ]
+                ]
+            ]
+            ,
         ];
 
         $app = app('wechat');
