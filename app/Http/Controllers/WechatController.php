@@ -56,7 +56,7 @@ class WechatController extends Controller
             ],
             [
                 "type" => "view",
-                "name" => "随手拍.",
+                "name" => "随手拍",
                 "url"  => "http://gm.shenzhenjuly.com/article/create"
             ],
         ];
