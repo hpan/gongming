@@ -47,6 +47,22 @@ class WechatController extends Controller
     }
 
     public function createmenu(){
-        echo "create menu...";
+        Log::info('create menu in...');
+        $buttons = [
+            [
+                "type" => "view",
+                "name" => "工作动态",
+                "url"  => "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIxNTgxMTA2OA==#wechat_redirect"
+            ],
+            [
+                "type" => "view",
+                "name" => "随手拍.",
+                "url"  => "http://gm.shenzhenjuly.com/article/create"
+            ],
+        ];
+
+        $app = app('wechat');
+        $menu = $app->menu;
+        $menu->add($buttons);
     }
 }
