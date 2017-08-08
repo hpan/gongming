@@ -17,7 +17,7 @@ class ArticleController extends Controller
     }
 
     public function create(){
-//        Log::info('php create in...');
+        Log::info('php create in...');
 //
 //        $app = app('wechat');
 //        $oauth = $app->oauth;
@@ -37,7 +37,7 @@ class ArticleController extends Controller
     }
 
     public function create2(){
-//        Log::info('php create in...');
+        Log::info('php create2 in...');
 //
         $app = app('wechat');
         $oauth = $app->oauth;
