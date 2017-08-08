@@ -18,6 +18,15 @@ class ArticleController extends Controller
         $articles = DB::table('articles')->orderBy('id', "desc")->paginate(5);
         return view('admin.article.index', ['articles' => $articles]);
     }
+
+
+    public function index2()
+    {
+//        return view('admin/article/index')->withArticles(Article::all());
+
+        $articles = DB::table('articles')->orderBy('id', "desc")->paginate(5);
+        return view('admin.article.index2', ['articles' => $articles]);
+    }
     
     public function create()
     {
