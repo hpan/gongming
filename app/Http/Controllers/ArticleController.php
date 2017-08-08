@@ -23,7 +23,7 @@ class ArticleController extends Controller
         $app = app('wechat');
         $oauth = $app->oauth;
         // 未登录
-        if (empty($_SESSION['wechat_user'])) {
+        if (empty(session('wechat_user'))) {
             session(['target_url'=>'/article/create']);
             Log::info('create.session.target_url = ' . session('target_url'));
             return $oauth->redirect();
@@ -43,7 +43,7 @@ class ArticleController extends Controller
         $app = app('wechat');
         $oauth = $app->oauth;
         // 未登录
-        if (empty($_SESSION['wechat_user'])) {
+        if (empty(session('wechat_user'))) {
             session(['target_url'=>'/article/create']);
             Log::info('create2 session.target_url = ' . session('target_url'));
             return $oauth->redirect();
