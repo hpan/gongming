@@ -18,20 +18,20 @@ class ArticleController extends Controller
 
     public function create(){
 //        Log::info('php create in...');
-
-        $app = app('wechat');
-        $oauth = $app->oauth;
-        // 未登录
-        if (empty($_SESSION['wechat_user'])) {
-            $_SESSION['target_url'] = 'article/create';
-            return $oauth->redirect();
-            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
-            // $oauth->redirect()->send();
-        }
-        // 已经登录过
-        $user = $_SESSION['wechat_user'];
-
-        Log::info('wechat user: ' . json_encode($user));
+//
+//        $app = app('wechat');
+//        $oauth = $app->oauth;
+//        // 未登录
+//        if (empty($_SESSION['wechat_user'])) {
+//            $_SESSION['target_url'] = 'article/create';
+//            return $oauth->redirect();
+//            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
+//            // $oauth->redirect()->send();
+//        }
+//        // 已经登录过
+//        $user = $_SESSION['wechat_user'];
+//
+//        Log::info('wechat user: ' . json_encode($user));
 
         return view('article/create');
     }
