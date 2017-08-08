@@ -20,19 +20,19 @@ class ArticleController extends Controller
     public function create(){
         Log::info('php create in...');
 //
-//        $app = app('wechat');
-//        $oauth = $app->oauth;
-//        // 未登录
-//        if (empty($_SESSION['wechat_user'])) {
-//            $_SESSION['target_url'] = 'article/create';
-//            return $oauth->redirect();
-//            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
-//            // $oauth->redirect()->send();
-//        }
-//        // 已经登录过
-//        $user = $_SESSION['wechat_user'];
-//
-//        Log::info('wechat user: ' . json_encode($user));
+        $app = app('wechat');
+        $oauth = $app->oauth;
+        // 未登录
+        if (empty($_SESSION['wechat_user'])) {
+            session(['target_url'=>'/article/create']);
+            Log::info('create.session.target_url = ' . session('target_url'));
+            return $oauth->redirect();
+            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
+            // $oauth->redirect()->send();
+        }
+        // 已经登录过
+        $user = session('wechat_user');
+        Log::info('create.wechat_user: ' . json_encode($user));
 
         return view('article/create');
     }
@@ -44,7 +44,6 @@ class ArticleController extends Controller
         $oauth = $app->oauth;
         // 未登录
         if (empty($_SESSION['wechat_user'])) {
-//            $_SESSION['target_url'] = 'article/create';
             session(['target_url'=>'/article/create']);
             Log::info('create2 session.target_url = ' . session('target_url'));
             return $oauth->redirect();
@@ -53,7 +52,6 @@ class ArticleController extends Controller
         }
         // 已经登录过
         $user = session('wechat_user');
-
         Log::info('wechat user: ' . json_encode($user));
 
         return view('article/create');
@@ -93,8 +91,8 @@ class ArticleController extends Controller
         $article->address = $request->get('address');
         $article->images = trim($request->get('iptImageUrls'), ","); // 同上
 
-        $user = $_SESSION['wechat_user'];
-//        $article->wechat_open_id  = $user->get
+        $user = session('wechat_user');
+        $article->wechat_open_id  = $user['id'];
 //        $article->user_id = $request->user()->id; // 获取当前 Auth 系统中注册的用户，并将其 id 赋给 article 的 user_id 属性
 
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转

@@ -72,10 +72,9 @@ class WechatController extends Controller
         session(['wechat_user' => $user->toArray()]);
 
         Log::info("session.wechat_user = " . json_encode(session('wechat_user')));
-        Log::info('oauth_callback session.target_url = ' . session('target_url'));
+//        Log::info('oauth_callback session.target_url = ' . session('target_url'));
         $targetUrl = empty(session('target_url')) ? '/' : session('target_url');
 
-        Log::info("targetUrl = $targetUrl");
         header('location:'. $targetUrl); // 跳转到 user/profile
     }
 
