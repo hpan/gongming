@@ -71,9 +71,9 @@ class WechatController extends Controller
         $user = $oauth->user();
         $_SESSION['wechat_user'] = $user->toArray();
 
-        Log::info("session.wechat_user = " . json_encode(Session::get('wechat_user')));
-        Log::info('oauth_callback session.target_url = ' . Session::get('target_url'));
-        $targetUrl = empty(Session::get('target_url')) ? '/' : Session::get('target_url');
+        Log::info("session.wechat_user = " . json_encode(session('wechat_user')));
+        Log::info('oauth_callback session.target_url = ' . session('target_url'));
+        $targetUrl = empty(session('target_url')) ? '/' : session('target_url');
 
         Log::info("targetUrl = $targetUrl");
         header('location:'. $targetUrl); // 跳转到 user/profile
