@@ -44,6 +44,7 @@ class ArticleController extends Controller
         // 未登录
         if (empty($_SESSION['wechat_user'])) {
             $_SESSION['target_url'] = 'article/create';
+            Log::info('create2 session.target_url = ' . $_SESSION['target_url']);
             return $oauth->redirect();
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
             // $oauth->redirect()->send();
