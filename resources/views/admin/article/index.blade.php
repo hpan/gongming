@@ -59,14 +59,14 @@
                         </div>
                         {{--<a href="{{ url('admin/article/'.$article->id.'/edit') }}" class="btn btn-success">编辑</a>--}}
                         <div style="font-size:9pt; color: #999;">
-                            <form action="{{ url('admin/comment') }}" method="post">
-                                <input type="hidden" name="article_id" value="{{$article->id}}">
-                                <input type="hidden" name="nickname" value="admin">
-                                <input name="content" value="谢谢您的爆料" />
-                                {{ csrf_field() }}
-                                <button type="submit" >回复</button>
+                            {{--<form action="{{ url('admin/comment') }}" method="post">--}}
+                                {{--<input type="hidden" name="article_id" value="{{$article->id}}">--}}
+                                {{--<input type="hidden" name="nickname" value="admin">--}}
+                                {{--<input name="content" value="谢谢您的爆料" />--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<button type="submit" >回复</button>--}}
 
-                            </form>
+                            {{--</form>--}}
                         </div>
 
                     @endforeach
