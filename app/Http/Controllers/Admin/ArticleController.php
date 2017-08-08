@@ -8,13 +8,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Article;
 use DB;
+use Log;
 
 class ArticleController extends Controller
 {
     public function index()
     {
 //        return view('admin/article/index')->withArticles(Article::all());
-
+//echo("33333");
+        Log::info("admin.article.index.innnn..");
         $articles = DB::table('articles')->orderBy('id', "desc")->paginate(5);
         return view('admin.article.index', ['articles' => $articles]);
     }
@@ -83,5 +85,16 @@ class ArticleController extends Controller
     {
         Article::find($id)->delete();
         return redirect()->back()->withInput()->withErrors('删除成功！');
+    }
+    
+    public function feedback(Request $request, $id){
+        Log::info("feedback in.. id = $id");
+        $article = Article::find($id);
+        Log::info("feedback.article = " . json_encode($article));
+        Log::info("feedback.feedback_content = " . json_encode($request->get('feedback_content')));
+//        $openId = "o_GGtv_8Op5YmNOm6dQBgal515zU";
+        $app = app('wechat');
+        $message = new Text(['content' => $request->get('feedback_content')]);
+        $result = $app->staff->message($message)->to($article->wechat_open_id)->send();
     }
 }
