@@ -29,6 +29,7 @@ Route::any('wechat', 'WechatController@serve');
 Route::any('wechat/menu', 'WechatController@menu');
 Route::any('wechat/createmenu', 'WechatController@createmenu');
 Route::any('wechat/send', 'WechatController@send');
+Route::any('wechat/oauth_callback', 'WechatController@oauth_callback');
 Route::any('test/{id}', 'TestController@show');
 Route::resource('article', 'ArticleController');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
