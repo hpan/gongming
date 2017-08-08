@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Staff\Session;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -43,14 +44,16 @@ class ArticleController extends Controller
         $oauth = $app->oauth;
         // 未登录
         if (empty($_SESSION['wechat_user'])) {
-            $_SESSION['target_url'] = 'article/create';
-            Log::info('create2 session.target_url = ' . $_SESSION['target_url']);
+//            $_SESSION['target_url'] = 'article/create';
+            Session::put('target_url','article/create');
+            Session::save();
+            Log::info('create2 session.target_url = ' . Session::get('target_url'));
             return $oauth->redirect();
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
             // $oauth->redirect()->send();
         }
         // 已经登录过
-        $user = $_SESSION['wechat_user'];
+        $user = Session::get('wechat_user');
 
         Log::info('wechat user: ' . json_encode($user));
 
