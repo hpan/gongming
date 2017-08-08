@@ -36,6 +36,26 @@ class ArticleController extends Controller
         return view('article/create');
     }
 
+    public function create2(){
+//        Log::info('php create in...');
+//
+        $app = app('wechat');
+        $oauth = $app->oauth;
+        // 未登录
+        if (empty($_SESSION['wechat_user'])) {
+            $_SESSION['target_url'] = 'article/create';
+            return $oauth->redirect();
+            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
+            // $oauth->redirect()->send();
+        }
+        // 已经登录过
+        $user = $_SESSION['wechat_user'];
+
+        Log::info('wechat user: ' . json_encode($user));
+
+        return view('article/create');
+    }
+
     public function store(Request $request) // Laravel 的依赖注入系统会自动初始化我们需要的 Request 类
     {
 //        var_dump($request->get('anonymous')[0]);
