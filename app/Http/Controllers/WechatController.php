@@ -69,7 +69,7 @@ class WechatController extends Controller
         $oauth = $app->oauth;
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
-        $_SESSION['wechat_user'] = $user->toArray();
+        session(['wechat_user' => $user->toArray()]);
 
         Log::info("session.wechat_user = " . json_encode(session('wechat_user')));
         Log::info('oauth_callback session.target_url = ' . session('target_url'));
