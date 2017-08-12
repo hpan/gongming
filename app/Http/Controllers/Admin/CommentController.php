@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function get($articleId)
     {
 //        Log::info("comment get in...articleId = $articleId");
-        $comments = DB::table("Comments")->where('article_id', '=', $articleId)->orderBy('id', 'desc')->get();
+        $comments = DB::table("comments")->where('article_id', '=', $articleId)->orderBy('id', 'desc')->get();
 //        Log::info(json_encode($comments));
         if(!empty($comments) && sizeof($comments) > 0){
             return $comments;
