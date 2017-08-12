@@ -30,7 +30,7 @@
                                 <span><b>手机号：</b></span><span>{{$article->mobile}}</span>&nbsp;
                                 <span><b>地址：</b></span><span>{{$article->address}}</span>&nbsp;
                                 <span><b>爆料时间：</b></span><span>{{$article->created_at}}</span>&nbsp;
-                                <span style="display:none;"><b>openId：</b></span><span>{{$article->wechat_open_id}}</span>&nbsp;
+                                <span style="display:none;"><b>openId：</b></span><span style="display:none;">{{$article->wechat_open_id}}</span>&nbsp;
 
 
                             </h6>
