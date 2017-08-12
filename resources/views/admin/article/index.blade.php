@@ -30,7 +30,7 @@
                                 <span><b>手机号：</b></span><span>{{$article->mobile}}</span>&nbsp;
                                 <span><b>地址：</b></span><span>{{$article->address}}</span>&nbsp;
                                 <span><b>爆料时间：</b></span><span>{{$article->created_at}}</span>&nbsp;
-                                <span><b>openId：</b></span><span>{{$article->wechat_open_id}}</span>&nbsp;
+                                <span style="display:none;"><b>openId：</b></span><span>{{$article->wechat_open_id}}</span>&nbsp;
 
 
                             </h6>
@@ -119,7 +119,7 @@
                     function(){
                         var articleId = $(this).attr("data");
                         $("input[name=article_id]").val(articleId);
-                        $.get("comment/" + articleId, function(res){
+                        $.get("/admin/comment/" + articleId, function(res){
                                     if(res!=undefined && res !="" && res!=null) {
                                         $("textarea[name=content]").val(res[0].content);
                                         $("textarea[name=content]").attr('disabled', true);
