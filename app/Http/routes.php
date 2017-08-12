@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('article', 'ArticleController');
     Route::resource('feedback', 'FeedbackController');
     Route::post('comment', 'CommentController@store');
-    Route::get('comment', 'CommentController@index');
+    Route::get('comment/{id}', 'CommentController@get');
 });
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/user', function () {

@@ -9,21 +9,33 @@ use App\Comment;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Log;
+use DB;
 use EasyWeChat\Message\Text;
 
 class CommentController extends Controller
 {
-    public function index()
+    public function get($articleId)
     {
-        Log::info("comment index in...");
-        echo "ccccccccccc";
+//        Log::info("comment get in...articleId = $articleId");
+        $comments = DB::table("Comments")->where('article_id', '=', $articleId)->orderBy('id', 'desc')->get();
+//        Log::info(json_encode($comments));
+        if(!empty($comments) && sizeof($comments) > 0){
+            return $comments;
+        }
+        return "";
     }
     //
     public function store(Request $request)
     {
         Log::info("comment store in...");
+        //1.保存回复内容
         if (Comment::create($request->all())) {
+            //2.修改article表回复状态
             $article = Article::find($request->get("article_id"));
+            $article->status = 1;
+            $article->save();
+
+            //3.微信给用户发消息
             $this->send($article->wechat_open_id, $request->get("content"));
             return redirect()->back();
         } else {
