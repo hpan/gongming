@@ -54,6 +54,8 @@
                                     <button type="submit" class="btn btn-danger">删除</button>
                                     @if($article->status == 1)
                                         <a data-toggle="modal" data-target="#feedback" class="btn btn-default btn-large btn-feedback" data="{{$article->id}}">已回复</a>
+                                    @elseif(strtotime(date('y-m-d h:i:s')) - strtotime($article->created_at) > 48*3600)
+                                        <a data-toggle="modal" class="btn btn-warning btn-large " data="{{$article->id}}">已超时</a>
                                     @else
                                         <a data-toggle="modal" data-target="#feedback" class="btn btn-primary btn-large btn-feedback" data="{{$article->id}}">回复</a>
                                     @endif
