@@ -65,6 +65,7 @@
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
             });
+            $('body').append("<div style='display:none;width:100%; margin:0 auto;position:fixed;left:0;top:0;bottom: 0;z-index: 111;opacity: 0.5;' id='loading'> <a class='mui-active' style='left: 50%;position: absolute;top:50%'><img src='{{ URL::asset('/') }}img/uploading.gif' style='margin-left: -10px;' /></a></div>");
         })
 
         $("#iptImage").on('change', function(){
@@ -78,8 +79,12 @@
                 cache: false,
                 data: formData,
                 processData: false,
-                contentType: false
+                contentType: false,
+                beforeSend:function(){
+                    $("#loading").show();
+                }
             }).done(function(res) {
+                        $("#loading").hide();
                         var imgUrl = "" + res;
                         console.log(imgUrl);
                         console.log("image length=" + $("#image-holder > img").length );
