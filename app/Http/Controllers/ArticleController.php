@@ -18,43 +18,26 @@ class ArticleController extends Controller
     }
 
     public function create(){
-        Log::info('php create in...');
-//
-        $app = app('wechat');
-        $oauth = $app->oauth;
-        // 未登录
-        if (empty(session('wechat_user'))) {
-            session(['target_url'=>'/article/create']);
-            Log::info('create.session.target_url = ' . session('target_url'));
-            return $oauth->redirect();
-            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
-            // $oauth->redirect()->send();
-        }
-        // 已经登录过
-        $user = session('wechat_user');
-        Log::info('create.wechat_user: ' . json_encode($user));
+//        Log::info('php create in...');
+//        $app = app('wechat');
+//        $oauth = $app->oauth;
+//        // 未登录
+//        if (empty(session('wechat_user'))) {
+//            session(['target_url'=>'/article/create']);
+////            Log::info('create.session.target_url = ' . session('target_url'));
+//            return $oauth->redirect();
+//            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
+//            // $oauth->redirect()->send();
+//        }
+//        // 已经登录过
+//        $user = session('wechat_user');
+//        Log::info('create.wechat_user: ' . json_encode($user));
 
         return view('article/create');
     }
-
-    public function create2(){
-        Log::info('php create2 in...');
-//
-        $app = app('wechat');
-        $oauth = $app->oauth;
-        // 未登录
-        if (empty(session('wechat_user'))) {
-            session(['target_url'=>'/article/create']);
-            Log::info('create2 session.target_url = ' . session('target_url'));
-            return $oauth->redirect();
-            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
-            // $oauth->redirect()->send();
-        }
-        // 已经登录过
-        $user = session('wechat_user');
-        Log::info('wechat user: ' . json_encode($user));
-
-        return view('article/create');
+    public function phpinfo()
+    {
+        echo phpinfo();
     }
 
     public function store(Request $request) // Laravel 的依赖注入系统会自动初始化我们需要的 Request 类
@@ -106,7 +89,6 @@ class ArticleController extends Controller
 
     public function success()
     {
-        Log::info('php uploaddfdf in...');
         return view("article/success");
     }
 }

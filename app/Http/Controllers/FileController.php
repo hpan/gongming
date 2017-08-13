@@ -48,6 +48,9 @@ class FileController extends Controller
                 Log::info("path=$path");
 //                var_dump($bool);
                 return "/uploads/" . $filename;
+            }else{
+                Log::info("file is not valid.");
+                return "";
             }
 
         }

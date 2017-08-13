@@ -63,12 +63,7 @@ class WechatController extends Controller
         $message = new Text(['content' => 'Hello world!']);
         $result = $app->staff->message($message)->to($openId)->send();
     }
-    public function feedback(){
-        $openId = "o_GGtv_8Op5YmNOm6dQBgal515zU";
-        $app = app('wechat');
-        $message = new Text(['content' => 'Hello world!']);
-        $result = $app->staff->message($message)->to($openId)->send();
-    }
+  
 
     public function oauth_callback(){
         $app = app('wechat');

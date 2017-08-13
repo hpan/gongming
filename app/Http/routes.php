@@ -26,7 +26,7 @@ Route::post('comment', 'CommentController@store');
 Route::post('file/upload', 'FileController@upload');
 Route::get('file/show/{filename}', 'FileController@show');
 Route::get('article/success', 'ArticleController@success');
-Route::get('article/create2', 'ArticleController@create2');
+Route::get('article/info', 'ArticleController@phpinfo');
 Route::any('wechat', 'WechatController@serve');
 Route::any('wechat/menu', 'WechatController@menu');
 Route::any('wechat/createmenu', 'WechatController@createmenu');
