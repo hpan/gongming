@@ -53,11 +53,11 @@
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger">删除</button>
                                     @if($article->status == 1)
-                                        <a data-toggle="modal" data-target="#feedback" class="btn btn-default btn-large btn-feedback" data="{{$article->id}}">已回复</a>
+                                        <a data-toggle="modal" data-target="#feedback" class="btn btn-default btn-large btn-feedback" data="{{$article->id}}" status="{{$article->status}}">已回复</a>
                                     @elseif(strtotime(date('y-m-d h:i:s')) - strtotime($article->created_at) > 48*3600)
-                                        <a data-toggle="modal" class="btn btn-warning btn-large " data="{{$article->id}}">已超时</a>
+                                        <a data-toggle="modal" class="btn btn-warning btn-large " data="{{$article->id}}" status="{{$article->status}}">已超时</a>
                                     @else
-                                        <a data-toggle="modal" data-target="#feedback" class="btn btn-primary btn-large btn-feedback" data="{{$article->id}}">回复</a>
+                                        <a data-toggle="modal" data-target="#feedback" class="btn btn-primary btn-large btn-feedback" data="{{$article->id}}" status="{{$article->status}}">回复</a>
                                     @endif
 
                                 </form>
@@ -120,16 +120,21 @@
             $(".btn-feedback").click(
                     function(){
                         var articleId = $(this).attr("data");
+                        var status = $(this).attr("status");
+                        if(status == 1){
+                            $("#fbSubmit").addClass("hide");
+                        }else{
+                            $("#fbSubmit").removeClass("hide");
+                        }
                         $("input[name=article_id]").val(articleId);
                         $.get("/admin/comment/" + articleId, function(res){
                                     if(res!=undefined && res !="" && res!=null) {
                                         $("textarea[name=content]").val(res[0].content);
                                         $("textarea[name=content]").attr('disabled', true);
-                                        $("#fbSubmit").addClass("hide");
                                     }else{
                                         $("textarea[name=content]").val('');
                                         $("textarea[name=content]").attr('disabled', false);
-                                        $("#fbSubmit").removeClass("hide");
+
                                     }
                         })
                     }
